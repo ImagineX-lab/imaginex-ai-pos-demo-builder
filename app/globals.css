@@ -1,0 +1,400 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+html, body {
+  height: 100%;
+  overflow-x: hidden;
+}
+
+html { scroll-behavior: smooth; }
+
+::selection {
+  background: #d97706;
+  color: #ffffff;
+}
+
+body {
+  font-family: 'Inter', system-ui, -apple-system, sans-serif;
+  background-color: #12151b;
+  color: #e2e8f0;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* ==========================================================================
+   SKEUOMORPHIC DESIGN SYSTEM (Tactile Hardware, Metallic Panels, Real Depths)
+   ========================================================================== */
+
+/* Main Skeuomorphic Background with Industrial Carbon/Grid Texture */
+.bg-skeuo-chassis {
+  background-color: #12151b;
+  background-image: 
+    radial-gradient(circle at 50% 0%, rgba(59, 130, 246, 0.08) 0%, transparent 60%),
+    radial-gradient(circle at 100% 100%, rgba(217, 119, 6, 0.05) 0%, transparent 50%),
+    linear-gradient(rgba(255, 255, 255, 0.015) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.015) 1px, transparent 1px);
+  background-size: 100% 100%, 100% 100%, 20px 20px, 20px 20px;
+}
+
+/* Chassis Panel — perfectly matches main body background for seamless top-to-bottom color */
+.skeuo-chassis-panel {
+  background: #12151b;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+  box-shadow: 
+    0 4px 20px rgba(0, 0, 0, 0.4),
+    inset 0 -1px 0 rgba(255, 255, 255, 0.04);
+}
+
+/* Tactile 3D Raised Card Module */
+.skeuo-card {
+  background: linear-gradient(180deg, #282e3a 0%, #1e232d 100%);
+  border-top: 1px solid rgba(255, 255, 255, 0.18);
+  border-left: 1px solid rgba(255, 255, 255, 0.08);
+  border-right: 1px solid rgba(0, 0, 0, 0.5);
+  border-bottom: 2px solid rgba(0, 0, 0, 0.7);
+  box-shadow: 
+    0 6px 14px rgba(0, 0, 0, 0.45),
+    0 1px 3px rgba(0, 0, 0, 0.3),
+    inset 0 1px 0 rgba(255, 255, 255, 0.1);
+  transition: all 0.15s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.skeuo-card-interactive:hover {
+  background: linear-gradient(180deg, #2e3544 0%, #222834 100%);
+  border-top-color: rgba(255, 255, 255, 0.28);
+  transform: translateY(-2px);
+  box-shadow: 
+    0 10px 22px rgba(0, 0, 0, 0.55),
+    0 2px 5px rgba(0, 0, 0, 0.35),
+    inset 0 1px 0 rgba(255, 255, 255, 0.18);
+}
+
+.skeuo-card-interactive:active {
+  transform: translateY(1px);
+  box-shadow: 
+    0 2px 4px rgba(0, 0, 0, 0.4),
+    inset 0 2px 4px rgba(0, 0, 0, 0.6);
+}
+
+/* Debossed Inset Well / Screen Housing */
+.skeuo-inset-well {
+  background: #0f1217;
+  border-top: 2px solid #080a0d;
+  border-left: 2px solid #0b0d10;
+  border-right: 1px solid rgba(255, 255, 255, 0.06);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 
+    inset 0 4px 10px rgba(0, 0, 0, 0.8),
+    inset 0 1px 3px rgba(0, 0, 0, 0.9),
+    0 1px 0 rgba(255, 255, 255, 0.05);
+}
+
+/* VFD (Vacuum Fluorescent Display) Glowing Green Screen */
+.skeuo-vfd-screen {
+  background: linear-gradient(180deg, #071612 0%, #030d0b 100%);
+  border: 2px solid #000000;
+  border-radius: 8px;
+  color: #34d399;
+  text-shadow: 0 0 8px rgba(52, 211, 153, 0.6), 0 0 20px rgba(52, 211, 153, 0.25);
+  box-shadow: 
+    inset 0 3px 8px rgba(0, 0, 0, 0.9),
+    inset 0 0 20px rgba(5, 150, 105, 0.15),
+    0 1px 0 rgba(255, 255, 255, 0.1);
+  font-family: 'Courier New', Courier, monospace;
+  position: relative;
+  overflow: hidden;
+}
+
+.skeuo-vfd-screen::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 40%;
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.08) 0%, transparent 100%);
+  pointer-events: none;
+}
+
+/* Amber Digital LED Screen */
+.skeuo-amber-screen {
+  background: linear-gradient(180deg, #1c1103 0%, #0e0801 100%);
+  border: 2px solid #000000;
+  border-radius: 8px;
+  color: #fbbf24;
+  text-shadow: 0 0 8px rgba(251, 191, 36, 0.65), 0 0 20px rgba(245, 158, 11, 0.3);
+  box-shadow: 
+    inset 0 3px 8px rgba(0, 0, 0, 0.9),
+    inset 0 0 20px rgba(217, 119, 6, 0.2),
+    0 1px 0 rgba(255, 255, 255, 0.1);
+  font-family: 'Courier New', Courier, monospace;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Tactile 3D Extruded Push Button (Primary Action) */
+.skeuo-btn-primary {
+  background: linear-gradient(180deg, #3b82f6 0%, #1d4ed8 100%);
+  border-top: 1px solid rgba(255, 255, 255, 0.4);
+  border-left: 1px solid rgba(255, 255, 255, 0.2);
+  border-right: 1px solid rgba(0, 0, 0, 0.4);
+  border-bottom: 3px solid #1e3a8a;
+  box-shadow: 
+    0 4px 8px rgba(0, 0, 0, 0.5),
+    0 2px 0 #172554,
+    inset 0 1px 0 rgba(255, 255, 255, 0.35);
+  color: #ffffff;
+  font-weight: 700;
+  text-shadow: 0 -1px 1px rgba(0, 0, 0, 0.6);
+  transition: all 0.08s ease-in-out;
+  cursor: pointer;
+}
+
+.skeuo-btn-primary:hover {
+  background: linear-gradient(180deg, #60a5fa 0%, #2563eb 100%);
+  box-shadow: 
+    0 5px 10px rgba(0, 0, 0, 0.55),
+    0 2px 0 #172554,
+    inset 0 1px 0 rgba(255, 255, 255, 0.45);
+}
+
+.skeuo-btn-primary:active {
+  transform: translateY(2px);
+  border-bottom: 1px solid #1e3a8a;
+  box-shadow: 
+    0 1px 2px rgba(0, 0, 0, 0.6),
+    inset 0 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+/* Tactile Neutral Hardware Key Button */
+.skeuo-btn-neutral {
+  background: linear-gradient(180deg, #333a48 0%, #242934 100%);
+  border-top: 1px solid rgba(255, 255, 255, 0.22);
+  border-left: 1px solid rgba(255, 255, 255, 0.1);
+  border-right: 1px solid rgba(0, 0, 0, 0.45);
+  border-bottom: 3px solid #12151b;
+  box-shadow: 
+    0 3px 6px rgba(0, 0, 0, 0.45),
+    0 1px 0 #0d0f14,
+    inset 0 1px 0 rgba(255, 255, 255, 0.18);
+  color: #e2e8f0;
+  font-weight: 600;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.8);
+  transition: all 0.08s ease-in-out;
+  cursor: pointer;
+}
+
+.skeuo-btn-neutral:hover {
+  background: linear-gradient(180deg, #3d4656 0%, #2a303d 100%);
+  color: #ffffff;
+}
+
+.skeuo-btn-neutral:active {
+  transform: translateY(2px);
+  border-bottom: 1px solid #12151b;
+  box-shadow: 
+    0 1px 2px rgba(0, 0, 0, 0.5),
+    inset 0 2px 4px rgba(0, 0, 0, 0.6);
+}
+
+/* Mechanical Register Key (for Product tiles & Numeric Keys) */
+.skeuo-register-key {
+  background: linear-gradient(180deg, #2a313e 0%, #1f242e 100%);
+  border-top: 1px solid rgba(255, 255, 255, 0.2);
+  border-left: 1px solid rgba(255, 255, 255, 0.08);
+  border-right: 1px solid rgba(0, 0, 0, 0.4);
+  border-bottom: 3px solid #11141a;
+  border-radius: 10px;
+  box-shadow: 
+    0 4px 8px rgba(0, 0, 0, 0.5),
+    inset 0 1px 0 rgba(255, 255, 255, 0.15);
+  transition: all 0.08s ease-in-out;
+}
+
+.skeuo-register-key:hover {
+  background: linear-gradient(180deg, #323a4a 0%, #252b37 100%);
+  border-top-color: rgba(255, 255, 255, 0.3);
+}
+
+.skeuo-register-key:active {
+  transform: translateY(2px);
+  border-bottom-width: 1px;
+  box-shadow: 
+    0 1px 3px rgba(0, 0, 0, 0.6),
+    inset 0 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+/* Metallic Phillips/Hex Screw Accent */
+.skeuo-screw {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #71717a 0%, #3f3f46 50%, #18181b 100%);
+  box-shadow: 
+    inset 0 1px 1px rgba(255, 255, 255, 0.6),
+    inset 0 -1px 1px rgba(0, 0, 0, 0.8),
+    0 1px 2px rgba(0, 0, 0, 0.6);
+  position: relative;
+  display: inline-block;
+}
+
+.skeuo-screw::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 6px;
+  height: 1px;
+  background: #18181b;
+  transform: translate(-50%, -50%) rotate(45deg);
+  box-shadow: 0 0 1px rgba(255, 255, 255, 0.3);
+}
+
+/* Physical LED Status Pilot Bulb */
+.skeuo-led-green {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: radial-gradient(circle at 35% 35%, #86efac 0%, #22c55e 50%, #15803d 100%);
+  box-shadow: 
+    0 0 8px #22c55e,
+    inset 0 1px 2px rgba(255, 255, 255, 0.8),
+    0 1px 2px rgba(0, 0, 0, 0.6);
+  display: inline-block;
+}
+
+.skeuo-led-amber {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: radial-gradient(circle at 35% 35%, #fde68a 0%, #f59e0b 50%, #b45309 100%);
+  box-shadow: 
+    0 0 8px #f59e0b,
+    inset 0 1px 2px rgba(255, 255, 255, 0.8),
+    0 1px 2px rgba(0, 0, 0, 0.6);
+  display: inline-block;
+}
+
+.skeuo-led-blue {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: radial-gradient(circle at 35% 35%, #93c5fd 0%, #3b82f6 50%, #1d4ed8 100%);
+  box-shadow: 
+    0 0 8px #3b82f6,
+    inset 0 1px 2px rgba(255, 255, 255, 0.8),
+    0 1px 2px rgba(0, 0, 0, 0.6);
+  display: inline-block;
+}
+
+/* Authentic Thermal Receipt Paper Styling with Realistic Perforation Edge */
+.skeuo-receipt-paper {
+  background: #fbfbf9;
+  background-image: linear-gradient(#fbfbf9 0%, #f4f3ef 100%);
+  color: #1c1917;
+  font-family: 'Courier New', Courier, monospace;
+  box-shadow: 
+    0 12px 28px rgba(0, 0, 0, 0.6),
+    0 2px 6px rgba(0, 0, 0, 0.4),
+    inset 0 1px 0 rgba(255, 255, 255, 0.8);
+  position: relative;
+}
+
+.skeuo-receipt-tear-top {
+  position: absolute;
+  top: -6px;
+  left: 0;
+  right: 0;
+  height: 6px;
+  background: radial-gradient(circle at bottom, transparent 4px, #fbfbf9 4.5px);
+  background-size: 10px 6px;
+}
+
+.skeuo-receipt-tear-bottom {
+  position: absolute;
+  bottom: -6px;
+  left: 0;
+  right: 0;
+  height: 6px;
+  background: radial-gradient(circle at top, transparent 4px, #f4f3ef 4.5px);
+  background-size: 10px 6px;
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar { width: 7px; height: 7px; }
+::-webkit-scrollbar-track { background: #14171e; }
+::-webkit-scrollbar-thumb { 
+  background: linear-gradient(180deg, #374151 0%, #1f2937 100%);
+  border-radius: 4px;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+}
+::-webkit-scrollbar-thumb:hover { background: #4b5563; }
+
+/* Grid */
+.product-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(148px, 1fr));
+  gap: 12px;
+}
+
+@media (max-width: 640px) {
+  .product-grid {
+    grid-template-columns: repeat(auto-fill, minmax(130px, 1fr));
+    gap: 10px;
+  }
+}
+
+/* Caret */
+@keyframes caretBlink { 0%, 50% { opacity: 1; } 51%, 100% { opacity: 0; } }
+.typing-caret::after {
+  content: '';
+  display: inline-block;
+  width: 2px;
+  height: 1.1em;
+  margin-left: 2px;
+  vertical-align: -0.15em;
+  background: #34d399;
+  animation: caretBlink 1s steps(1) infinite;
+}
+
+/* Animations */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(6px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+.slide-up {
+  animation: fadeIn 0.25s ease-out forwards;
+}
+
+/* Number inputs */
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+}
+input[type="number"] { -moz-appearance: textfield; }
+
+/* Focus ring */
+*:focus-visible {
+  outline: 2px solid #3b82f6;
+  outline-offset: 1px;
+}
+
+/* Full viewport height that respects mobile browser chrome */
+.h-screen-safe {
+  height: 100vh;
+  height: 100dvh;
+}
+
+/* Hide scrollbar on mobile tab bars */
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
